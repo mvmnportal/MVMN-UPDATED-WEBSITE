@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharishi Vidya Mandir, Nalbari | CBSE Curriculum</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0d285c', // Deep School Blue
+                            gold: '#ffb800', // School Gold/Yellow
+                            light: '#f4f6f9',
+                            red: '#e63946'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Notice Board Scroll Bar Styling */
+        .notice-scroll::-webkit-scrollbar { width: 6px; }
+        .notice-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px;}
+        .notice-scroll::-webkit-scrollbar-thumb { background: #0d285c; border-radius: 4px; }
+        .notice-scroll::-webkit-scrollbar-thumb:hover { background: #ffb800; }
+        
+        /* Facility Card Hover Effect */
+        .facility-card { transition: all 0.3s ease; }
+        .facility-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+
+        /* Slider Styles */
+        .slide {
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Gradient Overlay for Slider Text readability */
+        .slider-overlay {
+            background: linear-gradient(to right, rgba(13, 40, 92, 0.9) 0%, rgba(13, 40, 92, 0.4) 50%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-brand-light text-gray-800 antialiased">
+
+    <!-- Top Info Bar -->
+    <div class="bg-brand-blue text-white text-xs md:text-sm py-2 px-4 shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+            <!-- Live Time & Date -->
+            <div class="flex items-center space-x-2 font-medium">
+                <i class="fa-regular fa-clock text-brand-gold"></i>
+                <span id="live-clock">Loading time...</span>
+            </div>
+            
+            <!-- Contact & Socials -->
+            <div class="flex items-center space-x-4 md:space-x-6">
+                <a href="mailto:nalbarimvm@gmail.com" class="hover:text-brand-gold transition-colors"><i class="fa-solid fa-envelope mr-1"></i> nalbarimvm@gmail.com</a>
+                <span class="hidden md:inline hover:text-brand-gold transition-colors"><i class="fa-solid fa-phone mr-1"></i> 8099992623 / 7002373630</span>
+                
+                <!-- Social Media -->
+                <div class="flex space-x-3 text-brand-gold border-l border-white/20 pl-4">
+                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo & Name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhshs7aiFTStV7saI4sVuNvWJe8gUk_pGpc8MhsxhlaMBwDDRTUoPe_BvZqtTtmU7n1VlebpLYhq7Xibzl-gdVniDk7AuktdD2Q7VebeAfhBSs6krjOYlCMkkY4LfONXaFwSXr85pXPTmaBl04Vf7fZa5pIwmrshj4TXuoeyUqlLujxo8Qt2VA5fXo6Yw/s224/61300.png" alt="MVM Logo" class="w-full h-full object-contain drop-shadow-md" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'40\' fill=\'%230d285c\'/><text x=\'50\' y=\'55\' font-family=\'Arial\' font-size=\'20\' fill=\'%23ffb800\' text-anchor=\'middle\'>MVM</text></svg>'">
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-3xl font-extrabold text-brand-blue tracking-tight leading-tight">MAHARISHI VIDYA MANDIR</h1>
+                    <p class="text-xs md:text-sm font-semibold text-gray-600">Nalbari <span class="text-brand-gold">|</span> CBSE Curriculum</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex space-x-5 xl:space-x-6 font-semibold text-brand-blue items-center text-sm xl:text-base">
+                <a href="#" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all">Home</a>
+                <a href="#about" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all">About Us</a>
+                <a href="#academics" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all">Academics</a>
+                <a href="#" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all">Examination</a>
+                <a href="#" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all flex items-center"><i class="fa-solid fa-laptop-code mr-1"></i> eService</a>
+                <a href="#contact" class="hover:text-brand-gold border-b-2 border-transparent hover:border-brand-gold pb-1 transition-all">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-blue focus:outline-none text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="flex flex-col px-4 py-2 space-y-2 font-medium text-brand-blue">
+                <a href="#" class="block py-2 border-b border-gray-50 hover:text-brand-gold">Home</a>
+                <a href="#about" class="block py-2 border-b border-gray-50 hover:text-brand-gold">About Us</a>
+                <a href="#academics" class="block py-2 border-b border-gray-50 hover:text-brand-gold">Academics</a>
+                <a href="#" class="block py-2 border-b border-gray-50 hover:text-brand-gold">Examination</a>
+                <a href="#" class="block py-2 border-b border-gray-50 hover:text-brand-gold flex items-center"><i class="fa-solid fa-laptop-code mr-2"></i> eService</a>
+                <a href="#admissions" class="block py-2 border-b border-gray-50 hover:text-brand-gold">Admissions</a>
+                <a href="#contact" class="block py-2 hover:text-brand-gold">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Notice -->
+    <div class="bg-brand-red text-white py-2 shadow-inner border-y-2 border-brand-gold relative overflow-hidden flex items-center">
+        <div class="bg-brand-gold text-brand-blue font-bold px-4 py-2 absolute left-0 z-10 flex items-center h-full shadow-md">
+            <i class="fa-solid fa-bell mr-2 animate-bounce"></i> UPDATES
+        </div>
+        <!-- Using a styled standard marquee for traditional school site feel -->
+        <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="6" class="ml-32 font-medium text-sm md:text-base">
+            <span class="mx-4">🌟 Admissions Open for Session 2026-27! <a href="#admissions" class="underline text-brand-gold hover:text-white font-bold ml-1">Click here to apply online.</a></span>
+            <span class="mx-4">|</span>
+            <span class="mx-4">📅 Parent-Teacher Meeting scheduled for coming Saturday.</span>
+            <span class="mx-4">|</span>
+            <span class="mx-4">🏆 Congratulations to our students for 100% CBSE Board Results!</span>
+             <span class="mx-4">|</span>
+            <span class="mx-4">💻 Access student portals via the new eService section.</span>
+        </marquee>
+    </div>
+
+    <!-- Responsive Image Slider Section -->
+    <section class="relative h-[60vh] md:h-[75vh] w-full bg-brand-blue overflow-hidden">
+        
+        <!-- Slider Container -->
+        <div id="slider-container" class="w-full h-full relative">
+
+            <!-- Slide 1 -->
+            <div class="slide active w-full h-full relative">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiErvJ6CY8pC9F7i2ITAeLTN_qLi_N-C3-inRD8uMG_HKw85hO70f-mOhdgG3B0mcelrnTezFX3rwU82C7w8yDitBk83XyjpiNFcLvgIJAN_UOUkB4ezIiuh-PlJ0louzAsjQ73UQQid8d6Ce-AIMK2AJBGHUhhIi6tOGrNzSpc4po1WSgN493SdUrJmw/s1280/130509.jpg" class="w-full h-full object-cover" alt="School Activities 1" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80'">
+                <div class="absolute inset-0 slider-overlay flex flex-col justify-center px-8 md:px-16 lg:px-24">
+                     <div class="max-w-2xl text-white">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-gold text-brand-blue font-bold text-xs md:text-sm mb-3 md:mb-4 tracking-wider uppercase shadow-lg">CBSE Curriculum</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-2 md:mb-4 leading-tight drop-shadow-lg text-white">
+                            Holistic Education
+                        </h2>
+                        <p class="text-base md:text-xl mb-6 md:mb-8 font-light drop-shadow-md text-gray-200">
+                            Fostering intellectual, physical, and spiritual growth in every child.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide w-full h-full relative">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiU5d5LNMQj0EfBqjWWhnU8ry5VqmEkiVskxxs3aOZHoSPrHGQrxMkErhn6TRlpugSLb1w_gA_F9cCxim0ZmmI-JwOMly8LSTLzzSYq76aqRk27K3sjtUN_9_qLiQ9vLBRA_WFHQ4lQYAFxHZb15H7h3_vezXkeACDZ-J2TTyn1x400dKwiWxtX2fxG-Q/s1280/130508.jpg" class="w-full h-full object-cover" alt="School Activities 2" onerror="this.src='https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1920&q=80'">
+                <div class="absolute inset-0 slider-overlay flex flex-col justify-center px-8 md:px-16 lg:px-24">
+                     <div class="max-w-2xl text-white">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-gold text-brand-blue font-bold text-xs md:text-sm mb-3 md:mb-4 tracking-wider uppercase shadow-lg">Our Campus</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-2 md:mb-4 leading-tight drop-shadow-lg text-white">
+                            Vibrant Environment
+                        </h2>
+                        <p class="text-base md:text-xl mb-6 md:mb-8 font-light drop-shadow-md text-gray-200">
+                            Providing the perfect atmosphere for joyful learning and discovery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide w-full h-full relative">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgK7XRjfIjlY-mJ30G7dp0XsxKIq1HGtHFSK6l3DxC9_T2UsRrvL6y92GJJMnpED7XhjwKS5onWa3ZM0goKaZtJZ4Gkkeac7T6mM7QVpkWzJNcQTGUF0Jb1kWHE5eYCBsV6LXKhA5RnyHoZHl32RL0Tx_XT8Ikt01L3MQAZQka68TuK90PnJT05AK-PbA/s1280/130510.jpg" class="w-full h-full object-cover" alt="School Activities 3" onerror="this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80'">
+                <div class="absolute inset-0 slider-overlay flex flex-col justify-center px-8 md:px-16 lg:px-24">
+                     <div class="max-w-2xl text-white">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-gold text-brand-blue font-bold text-xs md:text-sm mb-3 md:mb-4 tracking-wider uppercase shadow-lg">Extracurriculars</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-2 md:mb-4 leading-tight drop-shadow-lg text-white">
+                            Beyond Books
+                        </h2>
+                        <p class="text-base md:text-xl mb-6 md:mb-8 font-light drop-shadow-md text-gray-200">
+                            Encouraging talents in arts, sports, and cultural activities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide w-full h-full relative">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC4WiIkZ-MGUMeWr8z-YZU6QH6fDgfqDmoo18Y76_f7-pTG25oky4JO5kLCTJYKLWkA294XqGtigz1G9y74Hzq1sOGahGVTnIjKpDSqA-fbD3b_Go3yOZk7fi0pKMUz8TAxWXwEBlqdB-3juK3knI964WLjOPIn_UKPm37iVMBnBMd_iUHPp1G2bTEQg/s2046/130512.jpg" class="w-full h-full object-cover" alt="School Activities 4" onerror="this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1920&q=80'">
+                <div class="absolute inset-0 slider-overlay flex flex-col justify-center px-8 md:px-16 lg:px-24">
+                     <div class="max-w-2xl text-white">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-gold text-brand-blue font-bold text-xs md:text-sm mb-3 md:mb-4 tracking-wider uppercase shadow-lg">Join Us</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-2 md:mb-4 leading-tight drop-shadow-lg text-white">
+                            Shape the Future
+                        </h2>
+                        <p class="text-base md:text-xl mb-6 md:mb-8 font-light drop-shadow-md text-gray-200">
+                            Admissions open for the upcoming academic session.
+                        </p>
+                         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#about" class="bg-brand-gold text-brand-blue text-center font-bold px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-white transition-all shadow-xl text-sm md:text-lg">Discover More</a>
+                            <a href="#contact" class="bg-transparent border-2 border-white text-white text-center font-bold px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-white hover:text-brand-blue transition-all shadow-xl text-sm md:text-lg">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <button id="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-brand-gold text-white hover:text-brand-blue w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors z-20">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-brand-gold text-white hover:text-brand-blue w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-colors z-20">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Slider Indicators -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
+                <!-- Dots generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <section class="container mx-auto px-4 py-16" id="about">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- About Section (Takes 2 columns) -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-xl p-8 border-t-4 border-brand-blue relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold opacity-10 rounded-bl-full -z-10"></div>
+                <h3 class="text-3xl font-bold text-brand-blue mb-6 flex items-center">
+                    <i class="fa-solid fa-school mr-3 text-brand-gold"></i> About Our School
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                    Located in the heart of Nalbari at Batiram Road, Maharishi Vidya Mandir is a premier educational institution dedicated to providing world-class education based on the <strong class="text-brand-blue">CBSE Curriculum</strong>. 
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                    We blend traditional values with modern teaching methodologies. Our environment is designed to stimulate intellectual curiosity, encourage physical fitness, and nurture the spiritual well-being of every child.
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 text-center">
+                    <div class="bg-brand-light p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="text-3xl text-brand-blue mb-2"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <div class="font-bold text-xl text-gray-800">100%</div>
+                        <div class="text-sm text-gray-500">Board Results</div>
+                    </div>
+                    <div class="bg-brand-light p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="text-3xl text-brand-gold mb-2"><i class="fa-solid fa-users"></i></div>
+                        <div class="font-bold text-xl text-gray-800">50+</div>
+                        <div class="text-sm text-gray-500">Expert Faculty</div>
+                    </div>
+                    <div class="bg-brand-light p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="text-3xl text-brand-red mb-2"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="font-bold text-xl text-gray-800">20+</div>
+                        <div class="text-sm text-gray-500">Awards Won</div>
+                    </div>
+                    <div class="bg-brand-light p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div class="text-3xl text-green-600 mb-2"><i class="fa-solid fa-leaf"></i></div>
+                        <div class="font-bold text-xl text-gray-800">Eco</div>
+                        <div class="text-sm text-gray-500">Green Campus</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice Board (Takes 1 column) -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 flex flex-col h-[500px]">
+                <div class="bg-brand-blue text-white p-4 flex justify-between items-center">
+                    <h3 class="text-xl font-bold flex items-center">
+                        <i class="fa-regular fa-clipboard mr-2 text-brand-gold"></i> Notice Board
+                    </h3>
+                    <span class="bg-brand-red text-xs font-bold px-2 py-1 rounded animate-pulse">LIVE</span>
+                </div>
+                
+                <!-- Scrollable notices -->
+                <div class="p-4 flex-1 overflow-y-auto notice-scroll bg-gray-50">
+                    <ul class="space-y-4">
+                        <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-brand-red hover:shadow-md transition-shadow">
+                            <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar text-brand-red"></i> Today</span>
+                            <a href="#" class="font-bold text-brand-blue hover:text-brand-gold transition-colors">Class X & XII Board Examination Date Sheet Released</a>
+                            <p class="text-sm text-gray-500 mt-2">Download the official CBSE date sheet from the Examination portal.</p>
+                        </li>
+                        <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-brand-gold hover:shadow-md transition-shadow">
+                            <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar text-brand-gold"></i> 3 Days Ago</span>
+                            <a href="#" class="font-bold text-brand-blue hover:text-brand-gold transition-colors">Fee Payment via eService</a>
+                            <p class="text-sm text-gray-500 mt-2">Parents can now pay tuition fees online using the new eService link.</p>
+                        </li>
+                        <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-brand-blue hover:shadow-md transition-shadow">
+                            <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar text-brand-blue"></i> 1 Week Ago</span>
+                            <a href="#" class="font-bold text-brand-blue hover:text-brand-gold transition-colors">Annual Sports Week Registration</a>
+                            <p class="text-sm text-gray-500 mt-2">Students are requested to submit names to their respective class teachers.</p>
+                        </li>
+                         <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-400 hover:shadow-md transition-shadow">
+                            <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar"></i> 2 Weeks Ago</span>
+                            <a href="#" class="font-bold text-brand-blue hover:text-brand-gold transition-colors">Holiday Notice: Summer Vacation</a>
+                            <p class="text-sm text-gray-500 mt-2">School will remain closed for summer break starting next month.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-3 bg-gray-100 text-center border-t border-gray-200">
+                    <a href="#" class="text-brand-blue font-bold text-sm hover:underline">View All Notices <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="bg-gray-100 py-16" id="academics">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-blue mb-4">World-Class Facilities</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Providing the best infrastructure to support our CBSE curriculum and ensure holistic development.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Facility 1 -->
+                <div class="facility-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gray-300 relative">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Class" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-blue/20"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-14 h-14 bg-brand-gold text-white rounded-full flex items-center justify-center text-2xl mx-auto -mt-12 relative z-10 border-4 border-white">
+                            <i class="fa-solid fa-display"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-brand-blue mt-4 mb-2">Smart Classrooms</h4>
+                        <p class="text-gray-500 text-sm">Digitally equipped classrooms for interactive and engaging learning experiences.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 2 -->
+                <div class="facility-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gray-300 relative">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Library" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-blue/20"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-14 h-14 bg-brand-blue text-white rounded-full flex items-center justify-center text-2xl mx-auto -mt-12 relative z-10 border-4 border-white">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-brand-blue mt-4 mb-2">Vast Library</h4>
+                        <p class="text-gray-500 text-sm">Thousands of books, journals, and digital resources to spark curiosity.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 3 -->
+                <div class="facility-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gray-300 relative">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science Lab" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-blue/20"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-14 h-14 bg-brand-red text-white rounded-full flex items-center justify-center text-2xl mx-auto -mt-12 relative z-10 border-4 border-white">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-brand-blue mt-4 mb-2">Modern Labs</h4>
+                        <p class="text-gray-500 text-sm">State-of-the-art Science and Computer labs for practical knowledge.</p>
+                    </div>
+                </div>
+
+                <!-- Facility 4 -->
+                <div class="facility-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gray-300 relative">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sports" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-blue/20"></div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <div class="w-14 h-14 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl mx-auto -mt-12 relative z-10 border-4 border-white">
+                            <i class="fa-solid fa-basketball"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-brand-blue mt-4 mb-2">Sports Complex</h4>
+                        <p class="text-gray-500 text-sm">Extensive playgrounds and coaching for physical fitness and teamwork.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission CTA -->
+    <section class="py-16 bg-brand-gold relative" id="admissions">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-brand-blue mb-6">Shape Your Child's Future Today!</h2>
+            <p class="text-xl text-brand-blue/80 mb-8 max-w-3xl mx-auto font-medium">Admissions are currently open. Join the Maharishi Vidya Mandir family and give your child the foundation they deserve.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-brand-blue text-white font-bold px-10 py-4 rounded-full hover:bg-gray-900 transition-all shadow-xl text-lg flex items-center justify-center">
+                    <i class="fa-solid fa-file-signature mr-2"></i> Enroll Now
+                </button>
+                <button class="bg-white text-brand-blue font-bold px-10 py-4 rounded-full hover:bg-gray-100 transition-all shadow-xl text-lg flex items-center justify-center border-2 border-brand-blue">
+                    <i class="fa-solid fa-download mr-2"></i> Download Prospectus
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer class="bg-brand-blue text-gray-300 pt-16 pb-8 border-t-8 border-brand-gold" id="contact">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- School Info -->
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-brand-gold p-1">
+                             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhshs7aiFTStV7saI4sVuNvWJe8gUk_pGpc8MhsxhlaMBwDDRTUoPe_BvZqtTtmU7n1VlebpLYhq7Xibzl-gdVniDk7AuktdD2Q7VebeAfhBSs6krjOYlCMkkY4LfONXaFwSXr85pXPTmaBl04Vf7fZa5pIwmrshj4TXuoeyUqlLujxo8Qt2VA5fXo6Yw/s224/61300.png" alt="MVM Logo" class="w-full h-full object-contain">
+                        </div>
+                        <h4 class="text-2xl font-extrabold text-white">MVM Nalbari</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                        Dedicated to creating leaders of tomorrow through holistic education, traditional values, and modern curriculum.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6 border-b-2 border-brand-gold pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> About Us</a></li>
+                        <li><a href="#academics" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> Academics</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> Examination</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> eService</a></li>
+                        <li><a href="#admissions" class="hover:text-brand-gold transition-colors flex items-center"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-gold"></i> Admissions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Details -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6 border-b-2 border-brand-gold pb-2 inline-block">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1.5 mr-3 text-brand-gold text-xl"></i>
+                            <span>Batiram Road,<br>Nalbari, Assam<br>PIN-781335</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-brand-gold text-xl"></i>
+                            <div>
+                                <a href="tel:8099992623" class="hover:text-white block">8099992623</a>
+                                <a href="tel:7002373630" class="hover:text-white block">7002373630</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-brand-gold text-xl"></i>
+                            <a href="mailto:nalbarimvm@gmail.com" class="hover:text-white">nalbarimvm@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Google Map Embed - FIXED TO SHOW ACTUAL LOCATION -->
+                <div class="col-span-1 lg:col-span-1">
+                    <h4 class="text-xl font-bold text-white mb-6 border-b-2 border-brand-gold pb-2 inline-block">Find Us on Map</h4>
+                    <div class="rounded-lg overflow-hidden border-2 border-white/20 shadow-lg relative h-[180px] bg-gray-200">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Maharishi%20Vidya%20Mandir,%20Nalbari&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; position:absolute; top:0; left:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <!-- The specific link provided by the user -->
+                    <a href="https://maps.app.goo.gl/kjuFQrzXwFiCpcUr9?g_st=ac" target="_blank" rel="noopener noreferrer" class="mt-3 block text-center bg-brand-gold text-brand-blue font-bold py-2 rounded hover:bg-white transition-colors text-sm shadow-md">
+                        <i class="fa-solid fa-map-location-dot mr-1"></i> Open in Google Maps App
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-white/10 pt-8 text-center text-sm flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; <span id="current-year"></span> Maharishi Vidya Mandir, Nalbari. All Rights Reserved.</p>
+                <p class="mt-2 md:mt-0 text-gray-500">CBSE Affiliated Institution</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for functionality -->
+    <script>
+        // Live Clock Function
+        function updateClock() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            };
+            document.getElementById('live-clock').innerText = now.toLocaleString('en-IN', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+
+        // Set Current Year in Footer
+        document.getElementById('current-year').innerText = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click of a link
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // --- Image Slider Logic ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('slider-dots');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+
+            // Create dots
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white/50', 'transition-colors');
+                if (i === 0) dot.classList.replace('bg-white/50', 'bg-brand-gold');
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('button');
+
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.replace('bg-brand-gold', 'bg-white/50');
+                
+                currentSlide = (n + slideCount) % slideCount;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.replace('bg-white/50', 'bg-brand-gold');
+                
+                resetInterval();
+            }
+
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+            // Event Listeners for arrows
+            document.getElementById('nextSlide').addEventListener('click', nextSlide);
+            document.getElementById('prevSlide').addEventListener('click', prevSlide);
+
+            // Start auto sliding
+            startInterval();
+        });
+    </script>
+</body>
+</html>
