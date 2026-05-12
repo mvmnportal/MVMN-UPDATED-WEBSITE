@@ -85,8 +85,8 @@
                 
                 <!-- Social Media -->
                 <div class="flex space-x-3 text-brand-gold border-l border-white/20 pl-4">
-                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/share/16dNtBEMxs/" target="_blank" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://whatsapp.com/channel/0029VatDLu30rGiSAD1h2o0G" target="_blank" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-youtube"></i></a>
                 </div>
@@ -137,6 +137,9 @@
             </div>
         </div>
     </header>
+
+    <!-- Dynamic Admit Card Banner -->
+    <div id="admit-card-banner-container"></div>
 
     <!-- Marquee Notice -->
     <div class="bg-brand-red text-white py-2 shadow-inner border-y-2 border-brand-gold relative overflow-hidden flex items-center">
@@ -301,7 +304,7 @@
                         <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-brand-red hover:shadow-md transition-shadow">
                             <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar text-brand-red"></i> 22/04/2026 </span>
                             <a href="#" class="font-bold text-brand-blue hover:text-brand-gold transition-colors">Grammar Competitive Examination for Classes I–X </a>
-                            <p class="text-sm text-gray-500 mt-2">Maharishi Vidya Mandir is conducting a Grammar Competitive Examination for Classes I–X on May 12, 2026, with registrations opening April 27 for a chance to win trophies and cash rewards.</p>
+                            <p class="text-sm text-gray-500 mt-2">Maharishi Vidya Mandir is conducting a Grammar Competitive Examination for Classes I–X on May 12, 2026, with registrations opening May 2 for a chance to win trophies and cash rewards.</p>
                         </li>
                         <li class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-brand-gold hover:shadow-md transition-shadow">
                             <span class="text-xs text-gray-400 font-semibold mb-1 block"><i class="fa-regular fa-calendar text-brand-gold"></i> 18/04/2026 </span>
@@ -465,8 +468,8 @@
                         Dedicated to creating leaders of tomorrow through holistic education, traditional values, and modern curriculum.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/share/16dNtBEMxs/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VatDLu30rGiSAD1h2o0G" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-whatsapp"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-blue transition-all"><i class="fa-brands fa-youtube"></i></a>
                     </div>
@@ -521,16 +524,63 @@
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>   
                     </div>
+                </div>
+            </div>
 
             <!-- Copyright -->
-            <div class="border-t border-white/10 pt-8 text-center text-sm flex flex-col md:flex-row justify-betwetems-center">
+            <div class="border-t border-white/10 pt-8 text-center text-sm flex flex-col md:flex-row justify-between items-center">
                 <p>&copy; <span id="current-year"></span> Maharishi Vidya Mandir, Nalbari. All Rights Reserved.</p>
                 <p class="mt-2 md:mt-0 text-gray-500"></p>
             </div>
+        </div>
     </footer>
 
     <!-- JavaScript for functionality -->
     <script>
+        // Admit Card Schedule Logic
+        function updateAdmitCardStatus() {
+            const now = new Date();
+            // Dates mapping (Month in JS Date is 0-indexed, so 4 = May)
+            const phase1 = new Date(2026, 4, 14, 15, 0, 0); // 14 May 2026, 3:00 PM
+            const phase2 = new Date(2026, 4, 15, 15, 0, 0); // 15 May 2026, 3:00 PM
+            const phase3 = new Date(2026, 4, 16, 11, 0, 0); // 16 May 2026, 11:00 AM
+            
+            const downloadUrl = "https://sites.google.com/view/mvmn/admit-card-download-for-gce-2026-2027";
+            
+            let bannerHtml = `
+                <div class="bg-gradient-to-r from-blue-900 to-brand-blue text-white py-3 px-4 border-b border-brand-gold flex flex-col lg:flex-row items-center justify-between z-40 relative gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-gold text-brand-blue w-10 h-10 flex items-center justify-center rounded-full shadow-md animate-pulse">
+                            <i class="fa-solid fa-id-card text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm md:text-base text-brand-gold uppercase tracking-wider">GCE (2026-27) Admit Cards</h3>
+                            <p class="text-xs text-gray-200">Release Schedule Status</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-2">
+            `;
+
+            // Function to generate the correct button state
+            const createBtn = (classes, dateText, isAvailable) => {
+                if (isAvailable) {
+                    return `<a href="${downloadUrl}" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold py-1.5 px-3 rounded text-xs md:text-sm shadow-md transition-all flex items-center gap-2 border border-green-400 transform hover:scale-105"><i class="fa-solid fa-download"></i> ${classes} Download</a>`;
+                } else {
+                    return `<button disabled class="bg-gray-800 text-gray-400 cursor-not-allowed font-medium py-1.5 px-3 rounded text-xs md:text-sm shadow border border-gray-600 flex items-center gap-2"><i class="fa-regular fa-clock"></i> ${classes}: ${dateText}</button>`;
+                }
+            };
+
+            // Build the buttons sequentially based on time
+            bannerHtml += createBtn("Classes I-III", "14 May, 3 PM", now >= phase1);
+            bannerHtml += createBtn("Classes IV-VII", "15 May, 3 PM", now >= phase2);
+            bannerHtml += createBtn("Classes VIII-X", "16 May, 11 AM", now >= phase3);
+
+            bannerHtml += `</div></div>`;
+            
+            // Inject the dynamic banner
+            document.getElementById('admit-card-banner-container').innerHTML = bannerHtml;
+        }
+
         // Live Clock Function
         function updateClock() {
             const now = new Date();
@@ -546,8 +596,13 @@
             };
             document.getElementById('live-clock').innerText = now.toLocaleString('en-IN', options);
         }
+        
+        // Execute status check and clock initially
+        updateAdmitCardStatus();
+        updateClock(); 
+        
         setInterval(updateClock, 1000);
-        updateClock(); // Initial call
+        setInterval(updateAdmitCardStatus, 60000); // Check release status every 1 minute
 
         // Set Current Year in Footer
         document.getElementById('current-year').innerText = new Date().getFullYear();
